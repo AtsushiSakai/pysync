@@ -1,0 +1,5 @@
+{
+    "sources": ["../pysync"],
+    "dest_dir": "~/backup_test",
+    "excludes": [".git", ".idea"]
+}
