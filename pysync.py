@@ -1,10 +1,7 @@
 """
 pysync: A rsync like tool by pure python only using standard libraries.
 
-TODO:
-- Dest dir error when path has last /
-- count error number
-- update README, docstring
+Author: Atsushi Sakai
 
 """
 import os
@@ -15,6 +12,11 @@ import time
 
 
 def run(conf_file_path="~/pysync_conf.json"):
+    """
+    Run synchronization with json config file.
+
+    :param conf_file_path: conf file path. Default if ~/pysync_conf.json
+    """
     with open(__normalize_path(conf_file_path)) as f:
         conf_dict = json.load(f)
         sync(conf_dict["sources"], conf_dict["dest_dir"], conf_dict["excludes"])
@@ -135,7 +137,6 @@ def main_direct_sync_call():
 
 
 if __name__ == '__main__':
-    # main_direct_sync_call()
     run()
 
 
