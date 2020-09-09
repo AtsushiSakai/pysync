@@ -81,10 +81,10 @@ def __validate_input(sources, dest_dir, excludes):
         raise TypeError("excludes should be list")
 
     for source in sources:
-        if not isdir(__normalize_path(source)):
+        if not isdir(expanduser(source)):
             raise ValueError(f"Invalid {source=}")
 
-    if not isdir(__normalize_path(dirname(dest_dir))):
+    if not isdir(expanduser(dirname(dest_dir))):
         raise ValueError(f"Invalid {dest_dir=}")
 
 
