@@ -55,10 +55,10 @@ def sync(sources: list, dest_dir: str, excludes: list):
                 n_checked_file += 1
                 source_file_path = join(cur_dir, file)
                 dest_file_path = join(copy_dir, file)
-                print(f"{source_file_path=} to {dest_file_path}")
 
                 if (__copy_if_not_exist(dest_file_path, source_file_path) or
                         __copy_if_update(dest_file_path, source_file_path)):
+                    print(f"{source_file_path=} to {dest_file_path}")
                     n_copied_file += 1
 
     elapsed_time = time.time() - start
@@ -105,7 +105,7 @@ def __copy_if_update(dest_file_path, source_file_path):
         try:
             shutil.copy2(source_file_path, dest_file_path)
             print("Copied!! Because the file updated")
-        except FileNotFoundError as e:
+        except (FileNotFoundError, PermissionError) as e:
             print(e)
         return True
     return False
