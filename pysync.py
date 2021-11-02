@@ -93,8 +93,10 @@ def __copy_if_not_exist(dest_file_path, source_file_path):
         try:
             shutil.copy2(source_file_path, dest_file_path)
             print("Copied!! Because the file does not exists")
+        except OSError as e:
+            print(f"OSError {e}")
         except FileNotFoundError as e:
-            print(e)
+            print(f"FileNotFoundError {e}")
 
         return True
     return False
