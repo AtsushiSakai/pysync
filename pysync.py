@@ -13,7 +13,7 @@ import time
 
 def run(conf_file_path="~/pysync_conf.json"):
     """
-    Run synchronization with json config file.
+    Run synchronization task with json config file.
 
     :param conf_file_path: conf file path. Default if ~/pysync_conf.json
     """
